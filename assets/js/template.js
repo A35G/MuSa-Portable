@@ -58,6 +58,10 @@ function makeFilters() {
                 }
             }
 
+            if (gnr.length % 4) {
+                document.getElementById("vgenre").appendChild(bxv);
+            }
+
             $("#fgenre").removeClass("d-none");
         }
 
@@ -89,6 +93,10 @@ function makeFilters() {
                     document.getElementById("vyear").appendChild(sxv);
                     m = 0;
                 }
+            }
+
+            if (yrs.length % 4) {
+                document.getElementById("vyear").appendChild(sxv);
             }
 
             $("#fyear").removeClass("d-none");
