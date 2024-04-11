@@ -13,7 +13,7 @@ The "portable" version currently in development and in "alpha" version, allows t
 
     - [ ] Language customization for texts
     - [ ] Pagination of results
-    - [ ] Two different views
+    - [ ] Two different views (*in development*)
 
 # Preview
 
