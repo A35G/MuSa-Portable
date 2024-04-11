@@ -23,3 +23,5 @@ With each advancement, the screenshots will be updated to reflect the new featur
 <img src="./screenshots/Home.png" width="48%"/> <img src="./screenshots/Info.png" width="48%"/>
 
 <img src="./screenshots/Preview.png" width="48%"/> <img src="./screenshots/Video.png" width="48%"/>
+
+<img src="./screenshots/Table-view.png" width="48%"/> 
