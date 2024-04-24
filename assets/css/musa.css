@@ -12,7 +12,7 @@
     }
 }
 
-#button {
+#button, #btop {
     display: inline-block;
     background-color: #FF9800;
     width: 50px;
@@ -29,7 +29,7 @@
     z-index: 1000;
 }
 
-#button::after {
+#button::after, #btop::after {
     font-family: FontAwesome;
     font-weight: normal;
     font-style: normal;
@@ -38,11 +38,11 @@
     color: #fff;
 }
 
-#button:hover {
+#button:hover, #btop:hover {
   cursor: pointer;
 }
 
-#button.show {
+#button.show, #btop.show {
     opacity: 1;
     visibility: visible;
 }
