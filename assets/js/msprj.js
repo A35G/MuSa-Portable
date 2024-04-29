@@ -222,6 +222,10 @@ function Musa(json, options) {
             });
 
             document.addEventListener("DOMContentLoaded", () => {
+                let html = document.querySelector("html");
+                html.setAttribute("dir", _this.translations["musa-lang-dir"]);
+                html.setAttribute("lang", _this.translations["musa-lang-name"]);
+
                 document.querySelectorAll("[data-i18n]")
                 .forEach(translateApp);
             });
@@ -603,6 +607,7 @@ function Musa(json, options) {
 
             for (let u = 0; u < cln; u++) {
                 var tbr = document.createElement("td");
+                let dvc = "trm" + bx;
 
                 if (parseInt(u) == 0) {
                     tbr.className = "text-center align-middle";
@@ -641,7 +646,7 @@ function Musa(json, options) {
 
                     const dvh = document.createElement("div");
                     dvh.className = "d-none";
-                    dvh.id = "trm" + bx;
+                    dvh.id = dvc;
                     dvh.textContent = dataMedia;
 
                     tbr.appendChild(dvh);
@@ -669,7 +674,7 @@ function Musa(json, options) {
                     let alnk = document.createElement("a");
                     alnk.className = "btn btn-sm btn-icon border-0 showInfo";
                     alnk.setAttribute("title", "Info");
-                    alnk.setAttribute("data-src", "trm" + bx);
+                    alnk.setAttribute("data-src", dvc);
 
                     let aimg = document.createElement("i");
                     aimg.className = "bi-info-circle";
@@ -677,6 +682,10 @@ function Musa(json, options) {
                     alnk.appendChild(aimg);
 
                     tbr.appendChild(alnk);
+
+                    alnk.addEventListener("click", function() {
+                        _this.loadMediaCard(dvc);
+                    });
 
                     let apln = document.createElement("a");
                     let ustr = path + "?v=" + pItem[x].identity;
@@ -1192,6 +1201,79 @@ function Musa(json, options) {
 
         if (parseInt(startIndex) <= parseInt(pages)) {
             ++startIndex;
+        }
+    }
+
+    this.loadMediaCard = function(args) {
+        if (typeof args !== 'undefined' && typeof args !== '') {
+            let elem = document.getElementById(args);
+            if (typeof(elem) !== 'undefined' && elem !== null) {
+                var cntData = elem.textContent;
+
+                if (typeof cntData !== 'undefined' 
+                    && typeof cntData !== null 
+                    && cntData.length > 0 
+                    && validJSON(cntData)) {
+
+                    try {
+                        var m = JSON.parse(cntData);
+                    } catch(e) {
+                        console.log(e);
+                        return false;
+                    }
+
+                    document.getElementById("tramaLabel").textContent = m.titoloFilm;
+
+                    if (typeof m.locandinaFilm !== undefined 
+                        && typeof m.locandinaFilm !== null 
+                        && m.locandinaFilm.length > 0) {
+                        document.getElementById("coverModal").textContent = "";
+
+                        var imgc = document.createElement("img");
+                        imgc.className = "bd-placeholder-img card-img-top shadow";
+                        imgc.setAttribute("src", m.locandinaFilm);
+                        imgc.setAttribute("width", "100%");
+
+                        document.getElementById("coverModal").appendChild(imgc);
+                    } else {
+                        document.getElementById("coverModal").classList.add("d-none");
+                    }
+
+                    if (m.annoFilm === "" 
+                        && m.genereFilm === "" 
+                        && m.durataFilm === "") {
+                        document.getElementById("coverModal").classList.add("d-none");
+                    } else {
+                        let prd = ((m.annoFilm === "") ? " -  - " : m.annoFilm);
+                        document.getElementById("yrv").textContent = prd;
+
+                        let gnr = ((m.genereFilm === "") ? " -  - " : m.genereFilm);
+                        document.getElementById("lstg").textContent = gnr;
+
+                        let tm = ((m.durataFilm === "") ? " -  - " : m.durataFilm);
+                        document.getElementById("tmdr").textContent = tm;
+                    }
+
+                    let cvr = document.getElementById("coverModal");
+                    let nfr = document.getElementById("infom");
+                    if (cvr.classList.contains("d-none") 
+                        && nfr.classList.contains("d-none")) {
+                        document.getElementById("latsx").classList.add("d-none");
+                        document.getElementById("latdx").classList.remove("col-md-8");
+                        document.getElementById("latdx").classList.add("col-md-12");
+                    }
+
+                    if (m.testoTrama !== "") {
+                        document.getElementById("textModal").innerHTML = nl2br(m.testoTrama);
+                    } else {
+                        document.getElementById("strmd").classList.remove("modal-lg");
+                    }
+
+                    detailsModal = bootstrap.Modal.getOrCreateInstance("#dettTrama");
+
+                    detailsModal.show();
+                }
+            }
         }
     }
 

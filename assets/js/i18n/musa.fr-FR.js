@@ -1,4 +1,6 @@
 var messages = {
+    "musa-lang-dir": "ltr",
+    "musa-lang-name": "fr",
     "musa-title": "Projet MuSa",
     "table-title": "Titre",
     "table-year": "Année",
@@ -14,7 +16,10 @@ var messages = {
     "table-footer-nextbutt": "Suivante",
     "head-genre-filter": "Genre",
     "head-year-filter": "Année",
-    "head-search": "Recherche..."
+    "head-search": "Recherche...",
+    "card-genre": "Genre:",
+    "card-year": "Année:",
+    "card-duration": "Durée:"
 };
 
 Musa.prototype.loadLocale = function() {
