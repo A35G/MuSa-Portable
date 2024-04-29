@@ -222,6 +222,10 @@ function Musa(json, options) {
             });
 
             document.addEventListener("DOMContentLoaded", () => {
+                let html = document.querySelector("html");
+                html.setAttribute("dir", _this.translations["musa-lang-dir"]);
+                html.setAttribute("lang", _this.translations["musa-lang-name"]);
+
                 document.querySelectorAll("[data-i18n]")
                 .forEach(translateApp);
             });
