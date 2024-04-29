@@ -16,7 +16,10 @@ var messages = {
     "table-footer-nextbutt": "Suivante",
     "head-genre-filter": "Genre",
     "head-year-filter": "Année",
-    "head-search": "Recherche..."
+    "head-search": "Recherche...",
+    "card-genre": "Genre:",
+    "card-year": "Année:",
+    "card-duration": "Durée:"
 };
 
 Musa.prototype.loadLocale = function() {
