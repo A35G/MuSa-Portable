@@ -1,4 +1,6 @@
 var messages = {
+    "musa-lang-dir": "ltr",
+    "musa-lang-name": "fr",
     "musa-title": "Projet MuSa",
     "table-title": "Titre",
     "table-year": "Année",
