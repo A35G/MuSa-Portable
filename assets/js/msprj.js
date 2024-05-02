@@ -87,7 +87,11 @@ function Musa(json, options) {
         path = base.substr(0, x1);
         path += pathname;
 
-        if (typeof this.loadLocale !== "undefined" && typeof this.loadLocale === "function") {
+        document.querySelectorAll(".shome")
+            .forEach((element) => element.setAttribute("href",path));
+
+        if (typeof this.loadLocale !== "undefined" 
+            && typeof this.loadLocale === "function") {
             this.loadLocale();
         }
 
@@ -182,6 +186,42 @@ function Musa(json, options) {
                                     let nmr = (isNum(nmrs)) ? nmrs : options.perPages;
                                     _this.loadTableData(startIndex, nmr);
                                 }
+                            }
+                        } else {
+                            if (options.template === 'full') {
+                                const bsd = document.getElementById("boxd");
+                                bsd.textContent = '';
+
+                                const lrt = document.createElement("div");
+                                lrt.className = "alert alert-info text-center";
+                                lrt.setAttribute("role","alert");
+
+                                const lrtp = document.createElement("span");
+                                lrtp.className = "fw-bold align-middle";
+
+                                const trs = _this.translations["alert-no-data"];
+                                lrtp.textContent = trs;
+
+                                lrt.appendChild(lrtp);
+                                bsd.appendChild(lrt);
+                            }
+
+                            if (options.template === 'simple') {
+                                const tbd = document.getElementById("mvbody");
+                                tbd.textContent = "";
+
+                                const deftr = document.createElement("tr");
+                                const deftd = document.createElement("td");
+                                deftd.setAttribute("colspan", 5);
+                                deftd.className = "text-center";
+                                deftd.textContent = "No data";
+                                deftd.setAttribute("data-i18n","table-no-data");
+
+                                const translation = _this.translations["table-no-data"];
+                                deftd.innerText = translation;
+
+                                deftr.appendChild(deftd);
+                                tbd.appendChild(deftr);
                             }
                         }
                     } else {
