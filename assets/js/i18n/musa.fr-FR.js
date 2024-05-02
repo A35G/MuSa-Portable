@@ -19,7 +19,8 @@ var messages = {
     "head-search": "Recherche...",
     "card-genre": "Genre:",
     "card-year": "Année:",
-    "card-duration": "Durée:"
+    "card-duration": "Durée:",
+    "alert-no-data": "Pas de données"
 };
 
 Musa.prototype.loadLocale = function() {
