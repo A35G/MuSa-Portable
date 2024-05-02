@@ -6,7 +6,7 @@ var messages = {
     "table-year": "Anno",
     "table-duration": "Durata",
     "table-head-nav": "elementi per pagina",
-    "table-no-data": "Nessuna informazioni",
+    "table-no-data": "Nessuna informazione",
     "table-footer-page": "Vai alla pagina:",
     "table-footer-show": "Risultati da ",
     "table-footer-to": " a ",
